@@ -1,11 +1,14 @@
 import React, { forwardRef, useImperativeHandle, useState } from "react";
-import Cart from "./Cart";
+import Cart from "./Cart.jsx";
+
 
 const CartModal = forwardRef(function Modal(
-  { cartItems, onUpdateCartItemQuantity, title, actions },
+  {  title, actions },
   ref
 ) {
   const [modalOpen, setModalOpen] = useState(false);
+  
+
 
   useImperativeHandle(ref, () => ({
     open: () => {
@@ -23,10 +26,7 @@ const CartModal = forwardRef(function Modal(
           &times;
         </span>
         <h2>{title}</h2>
-        <Cart
-          items={cartItems}
-          onUpdateItemQuantity={onUpdateCartItemQuantity}
-        />
+        <Cart/>
         <form className="modal-actions" method="dialog">
           {actions}
         </form>
